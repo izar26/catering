@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimoniController extends Controller
 {
@@ -26,49 +27,66 @@ class TestimoniController extends Controller
      * Menyimpan testimoni baru.
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
+{
+    $data = $request->validate([
+        'nama' => 'required|string|max:255',
+        'aktor' => 'nullable|string|max:255', // Validasi untuk aktor
+        'isi' => 'required|string',
+        'rating' => 'required|integer|min:1|max:5',
+        'foto' => 'nullable|image|max:1024', // Validasi untuk foto (max 1MB)
+    ]);
 
-        // Menangani input checkbox secara eksplisit
-        $validatedData['tampilkan'] = $request->has('tampilkan');
+    $data['tampilkan'] = $request->has('tampilkan');
 
-        Testimoni::create($validatedData);
-
-        return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil ditambahkan.');
+    if ($request->hasFile('foto')) {
+        $data['foto'] = $request->file('foto')->store('testimoni', 'public');
     }
+
+    Testimoni::create($data);
+
+    return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil ditambahkan.');
+}
 
     /**
      * Mengupdate testimoni yang ada.
      */
     public function update(Request $request, Testimoni $testimoni)
-    {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
+{
+    $data = $request->validate([
+        'nama' => 'required|string|max:255',
+        'aktor' => 'nullable|string|max:255',
+        'isi' => 'required|string',
+        'rating' => 'required|integer|min:1|max:5',
+        'foto' => 'nullable|image|max:1024',
+    ]);
 
-        // Menangani input checkbox secara eksplisit
-        $validatedData['tampilkan'] = $request->has('tampilkan');
+    $data['tampilkan'] = $request->has('tampilkan');
 
-        $testimoni->update($validatedData);
-
-        return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil diperbarui.');
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama jika ada
+        if ($testimoni->foto) {
+            Storage::disk('public')->delete($testimoni->foto);
+        }
+        $data['foto'] = $request->file('foto')->store('testimoni', 'public');
     }
+
+    $testimoni->update($data);
+
+    return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil diperbarui.');
+}
 
     /**
      * Menghapus testimoni.
      */
     public function destroy(Testimoni $testimoni)
-    {
-        $testimoni->delete();
+{
 
-        return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil dihapus.');
+    if ($testimoni->foto) {
+        Storage::disk('public')->delete($testimoni->foto);
     }
 
-    // Method create() dan edit() tidak diperlukan lagi dan bisa dihapus.
+    $testimoni->delete();
+
+    return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil dihapus.');
+}
 }

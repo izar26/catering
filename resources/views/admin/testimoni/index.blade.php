@@ -4,13 +4,6 @@
 
 @section('content')
 
-{{-- Notifikasi --}}
-@if (session('success'))
-<script>
-    document.addEventListener('DOMContentLoaded', function() { Toastify({ text: "{{ session('success') }}", ... }).showToast(); });
-</script>
-@endif
-
 <div class="row">
     <div class="col-md-4">
         <div class="card shadow-sm">
@@ -24,21 +17,35 @@
                     </div>
                 @endif
                 
-                <form action="{{ isset($testimoni_edit) ? route('admin.testimoni.update', $testimoni_edit->id) : route('admin.testimoni.store') }}" method="POST">
+                <form action="{{ isset($testimoni_edit) ? route('admin.testimoni.update', $testimoni_edit->id) : route('admin.testimoni.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if(isset($testimoni_edit))
                         @method('PUT')
                     @endif
 
                     <div class="mb-3">
+                        <label class="form-label fw-bold">Foto (Opsional)</label>
+                        @if(isset($testimoni_edit) && $testimoni_edit->foto)
+                            <img src="{{ asset('storage/'.$testimoni_edit->foto) }}" class="d-block img-thumbnail mb-2" style="max-height: 100px;">
+                        @endif
+                        <input type="file" name="foto" class="form-control" accept="image/*">
+                        <div class="form-text">Biarkan kosong jika tidak ingin mengubah foto.</div>
+                    </div>
+                    <div class="mb-3">
                         <label for="nama" class="form-label fw-bold">Nama Pelanggan</label>
                         <input type="text" name="nama" id="nama" class="form-control" value="{{ old('nama', $testimoni_edit->nama ?? '') }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="aktor" class="form-label fw-bold">Aktor/Profesi</label>
+                        <input type="text" name="aktor" id="aktor" class="form-control" value="{{ old('aktor', $testimoni_edit->aktor ?? '') }}" placeholder="Contoh: Ibu Rumah Tangga, Karyawan">
                     </div>
 
                     <div class="mb-3">
                         <label for="isi" class="form-label fw-bold">Isi Testimoni</label>
                         <textarea name="isi" id="isi" class="form-control" rows="4" required>{{ old('isi', $testimoni_edit->isi ?? '') }}</textarea>
                     </div>
+
 
                     <div class="mb-3">
                         <label for="rating" class="form-label fw-bold">Rating</label>
@@ -88,9 +95,17 @@
                         <tbody>
                             @forelse($testimonis as $testimoni)
                                 <tr>
-                                    <td class="fw-bold">{{ $testimoni->nama }}</td>
+                                    <td style="min-width: 200px;">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ $testimoni->foto ? asset('storage/'.$testimoni->foto) : 'https://via.placeholder.com/100.png?text=N/A' }}" alt="{{ $testimoni->nama }}" class="rounded-circle me-3" style="width: 45px; height: 45px; object-fit: cover;">
+                                            <div>
+                                                <div class="fw-bold">{{ $testimoni->nama }}</div>
+                                                <small class="text-muted">{{ $testimoni->aktor }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{{ Str::limit($testimoni->isi, 70) }}</td>
-                                    <td class="text-center text-warning" style="min-width: 100px;">
+                                    <td class="text-center text-warning" style="min-width: 120px;">
                                         @for ($i = 1; $i <= 5; $i++)
                                             <i class="bi {{ $i <= $testimoni->rating ? 'bi-star-fill' : 'bi-star' }}"></i>
                                         @endfor

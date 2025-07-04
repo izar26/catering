@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProfilPerusahaanController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\Admin\InfoPemesananController;
+use App\Http\Controllers\InterfaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,12 @@ use App\Http\Controllers\Admin\InfoPemesananController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InterfaceController::class, 'beranda'])->name('beranda');
+Route::get('/menu', [InterfaceController::class, 'menu'])->name('menu');
+Route::get('/gallery', [InterfaceController::class, 'gallery'])->name('gallery');
+Route::get('/testimoni', [InterfaceController::class, 'testimoni'])->name('testimoni');
+Route::get('/kontak', fn() => view('interface.kontak'))->name('kontak');
+Route::get('/reservasi', fn() => view('interface.reservasi'))->name('reservasi');
 
 // Rute untuk Login & Logout
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

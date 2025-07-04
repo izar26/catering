@@ -12,7 +12,7 @@ class Galeri extends Model
     /**
      * Atribut yang dapat diisi secara massal.
      *
-     * @var array<int, string>
+     * 
      */
     protected $fillable = [
         'judul',
