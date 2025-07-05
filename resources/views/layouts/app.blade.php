@@ -71,7 +71,14 @@
             <li><a href="/#paket">Paket</a></li>
             <li><a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }}"><span>Menu</span></a></li>
             <li><a href="{{ route('testimoni')}}" class="{{ request()->is('testimoni') ? 'active' : '' }}"><span>Testimoni</span></a></li>
-            <li><a href="{{ route('gallery')}}" class="{{ request()->is('gallery') ? 'active' : '' }}">Gallery</a></li>
+            <li class="dropdown">
+  <a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
+  <ul>
+    <li><a href="{{ route('galeri.foto') }}" class="{{ request()->is('galeri/foto') ? 'active' : '' }}">Foto</a></li>
+    <li><a href="{{ route('galeri.video') }}" class="{{ request()->is('galeri/video') ? 'active' : '' }}">Video</a></li>
+  </ul>
+</li>
+
             <li><a href="{{ route('kontak')}}" class="{{ request()->is('kontak') ? 'active' : '' }}">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -49,11 +49,18 @@ class InterfaceController extends Controller
     }
 
 
-    public function gallery()
-    {
-        $galeris = Galeri::latest()->get(); // ambil semua data gallery
-        return view('interface.gallery', compact('galeris'));
-    }
+    public function galeriFoto()
+{
+    $galeris = Galeri::where('tipe', 'foto')->latest()->get();
+    return view('interface.galeri-foto', compact('galeris'));
+}
+
+public function galeriVideo()
+{
+    $galeris = Galeri::where('tipe', 'video')->latest()->get();
+    return view('interface.galeri-video', compact('galeris'));
+}
+
 
     public function testimoni()
     {

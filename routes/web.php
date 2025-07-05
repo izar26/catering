@@ -19,7 +19,8 @@ use App\Http\Controllers\InterfaceController;
 
 Route::get('/', [InterfaceController::class, 'beranda'])->name('beranda');
 Route::get('/menu', [InterfaceController::class, 'menu'])->name('menu');
-Route::get('/gallery', [InterfaceController::class, 'gallery'])->name('gallery');
+Route::get('/galeri/foto', [InterfaceController::class, 'galeriFoto'])->name('galeri.foto');
+Route::get('/galeri/video', [InterfaceController::class, 'galeriVideo'])->name('galeri.video');
 Route::get('/testimoni', [InterfaceController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak', fn() => view('interface.kontak'))->name('kontak');
 Route::get('/reservasi', fn() => view('interface.reservasi'))->name('reservasi');
