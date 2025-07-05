@@ -78,7 +78,7 @@
 
     <div class="login-container">
         <div class="branding-panel">
-            <h1>CETRING</h1>
+            <h1>CATERING</h1>
             <p>Selamat Datang di Panel Admin</p>
         </div>
 
