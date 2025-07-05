@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('interface')
+    @php
+      // Pecah berdasarkan paragraf (misalnya pakai newline ganda)
+      $paragraf = preg_split('/\r\n|\r|\n/', $profil->tentang_kami);
+      $paragraf = array_filter($paragraf); // Buang yang kosong
+      $paragraf = array_values($paragraf); // Reset index jadi 0,1,2,...
+    @endphp
+
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
@@ -35,17 +42,27 @@
           </div>
           <div class="col-lg-6 order-2 order-lg-1 content">
             <h3>Tentang Kami</h3>
-            <p class="fst-italic">
-              {{ $profil->tentang_kami}}  
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Penyajian rapih dan menarik.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Layanan ramah dan profesional.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Cocok untuk berbagai acara: formal, santai, hingga spesial.</span></li>
-            </ul>
-            <p>
-              Kami percaya bahwa makanan bukan hanya soal rasa, tetapi juga tentang bagaimana setiap sajian mampu memperkuat kesan di setiap momen. Dengan pelayanan yang tulus dan kualitas yang terjaga, kami siap menjadi pilihan terpercaya untuk kebutuhan catering Anda.
-            </p>
+
+            {{-- Paragraf pertama --}}
+            @if(isset($paragraf[0]))
+              <p class="fst-italic">
+                {{ $paragraf[0] }}
+              </p>
+            @endif
+            
+            {{-- Paragraf tengah (jika lebih dari 2 paragraf) --}}
+            @if(count($paragraf) > 2)
+              <ul>
+                @foreach(array_slice($paragraf, 1, -1) as $isi)
+                  <li><i class="bi bi-check2-all"></i> <span>{{ $isi }}</span></li>
+                @endforeach
+              </ul>
+            @endif
+            
+            {{-- Paragraf terakhir --}}
+            @if(count($paragraf) > 1)
+              <p>{{ $paragraf[count($paragraf) - 1] }}</p>
+            @endif
           </div>
         </div>
 
@@ -112,7 +129,12 @@
         <div class="row">
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
+              @foreach($produkUnggulan as $produk)
+                <li class="nav-item">
+                  <a class="nav-link @if($loop->first) active show @endif" data-bs-toggle="tab" href="#produk-{{ $produk->id }}">{{ $produk->nama }}</a>
+                </li>
+              @endforeach
+              {{-- <li class="nav-item">
                 <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Modi sit est</a>
               </li>
               <li class="nav-item">
@@ -126,12 +148,26 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-5">Iusto ut expedita aut</a>
-              </li>
+              </li> --}}
             </ul>
           </div>
           <div class="col-lg-9 mt-4 mt-lg-0">
             <div class="tab-content">
-              <div class="tab-pane active show" id="specials-tab-1">
+              @foreach($produkUnggulan as $key => $produk)
+                <div class="tab-pane @if($key == 0) active show @endif" id="produk-{{ $produk->id }}">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>{{ $produk->nama }}</h3>
+                      <p>{{ $produk->deskripsi }}</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{{ asset('storage/' . $produk->gambar) }}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+
+              {{-- <div class="tab-pane active show" id="specials-tab-1">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
                     <h3>Architecto ut aperiam autem id</h3>
@@ -190,7 +226,7 @@
                     <img src="{{ asset('img/specials-5.png') }}" alt="" class="img-fluid">
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -226,86 +262,47 @@
           </script>
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-              <div class="row gy-4 event-item">
-                <div class="col-lg-6">
-                  <img src="{{ asset('img/events-slider/events-slider-1.jpg') }}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Birthday Parties</h3>
-                  <div class="price">
-                    <p><span>$189</span></p>
+            @foreach($produkPrevent as $produk)
+              @php
+                // Pisahkan deskripsi jadi array per paragraf (pakai Enter)
+                $paragraf = preg_split('/\r\n|\r|\n/', $produk->deskripsi);
+                $paragraf = array_filter($paragraf); // Buang baris kosong
+                $paragraf = array_values($paragraf); // Reset index
+              @endphp
+            
+              <div class="swiper-slide">
+                <div class="row gy-4 event-item">
+                  <div class="col-lg-6">
+                    <img src="{{ asset('storage/' . $produk->gambar) }}" class="img-fluid" alt="">
                   </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
-                </div>
-              </div>
-            </div><!-- End Slider item -->
-
-            <div class="swiper-slide">
-              <div class="row gy-4 event-item">
-                <div class="col-lg-6">
-                  <img src="{{ asset('img/events-slider/events-slider-2.jpg') }}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Private Parties</h3>
-                  <div class="price">
-                    <p><span>$290</span></p>
+                  <div class="col-lg-6 pt-4 pt-lg-0 content">
+                    <h3>{{ $produk->nama }}</h3>
+                    <div class="price">
+                      <p><span>Rp {{ number_format($produk->harga, 0, ',', '.') }}</span></p>
+                    </div>
+                  
+                    {{-- Paragraf pertama --}}
+                    @if(isset($paragraf[0]))
+                      <p class="fst-italic">{{ $paragraf[0] }}</p>
+                    @endif
+                  
+                    {{-- List isi tengah --}}
+                    @if(count($paragraf) > 2)
+                      <ul>
+                        @foreach(array_slice($paragraf, 1, -1) as $isi)
+                          <li><i class="bi bi-check2-circle"></i> <span>{{ $isi }}</span></li>
+                        @endforeach
+                      </ul>
+                    @endif
+                    
+                    {{-- Paragraf terakhir --}}
+                    @if(count($paragraf) > 1)
+                      <p>{{ $paragraf[count($paragraf) - 1] }}</p>
+                    @endif
                   </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
                 </div>
-              </div>
-            </div><!-- End Slider item -->
-
-            <div class="swiper-slide">
-              <div class="row gy-4 event-item">
-                <div class="col-lg-6">
-                  <img src="{{ asset('img/events-slider/events-slider-3.jpg') }}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Custom Parties</h3>
-                  <div class="price">
-                    <p><span>$99</span></p>
-                  </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
-                </div>
-              </div>
-            </div><!-- End Slider item -->
+              </div><!-- End Slider item -->
+            @endforeach
 
           </div>
           <div class="swiper-pagination"></div>
@@ -314,4 +311,35 @@
       </div>
 
     </section><!-- /Events Section -->
+
+    {{-- Paket Buffet Section --}}
+    <section id="paket" class="why-us section mt-custom">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>PAKET BUFFET</h2>
+        <p>Pilihan paket buffet terbaik untuk berbagai jenis acara Anda.</p>
+      </div>
+    
+      <div class="container">
+        <div class="row gy-4">
+          @foreach($paketans as $index => $paket)
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+            <div class="card-item d-flex flex-column align-items-center text-center">
+              <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+              <!-- Tambahkan gambar di sini -->
+              <img src="{{ asset('storage/' . $paket->gambar) }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
+              <h4>
+                <a href="#modal-paket-{{ $paket->id }}" class="glightbox" data-gallery="paket-gallery" data-type="inline">
+                  {{ $paket->nama }}
+                </a>
+              </h4>
+              <p>Rp {{ number_format($paket->harga, 0, ',', '.') }}</p>
+            </div>
+            
+            {{-- Modal Partial --}}
+            @include('components.paketan-modal', ['paket' => $paket, 'profil' => $profil])
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </section>
 @endsection

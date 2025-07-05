@@ -31,7 +31,7 @@ class ProfilPerusahaanController extends Controller
             'youtube' => 'nullable|url|max:255',
             'service_hours' => 'nullable|string|max:255',
             'fast_response' => 'nullable|string|max:255',
-            'tentang_kami' => 'nullable|string|max:255',
+            'tentang_kami' => 'nullable|string',
         ]);
 
         // Mengambil data profil atau membuat baru jika belum ada

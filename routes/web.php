@@ -23,6 +23,8 @@ Route::get('/gallery', [InterfaceController::class, 'gallery'])->name('gallery')
 Route::get('/testimoni', [InterfaceController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak', fn() => view('interface.kontak'))->name('kontak');
 Route::get('/reservasi', fn() => view('interface.reservasi'))->name('reservasi');
+Route::get('/paket-buffet', [InterfaceController::class, 'paketBuffet']);
+
 
 // Rute untuk Login & Logout
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

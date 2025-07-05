@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> --}}
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -41,8 +41,8 @@
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{ $profil->email }}</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ $profil->no_wa }}</span></i>
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:{{ $profil->email }}">{{ $profil->email }}</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="https://wa.me/{{ $profil->no_wa}}">{{ $profil->no_wa }}</a></span></i>
         </div>
         <div class="languages d-none d-md-flex align-items-center">
           <ul>
@@ -68,6 +68,7 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#specials">Specials</a></li>
             <li><a href="/#events">Events</a></li>
+            <li><a href="/#paket">Paket</a></li>
             <li><a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }}"><span>Menu</span></a></li>
             <li><a href="{{ route('testimoni')}}" class="{{ request()->is('testimoni') ? 'active' : '' }}"><span>Testimoni</span></a></li>
             <li><a href="{{ route('gallery')}}" class="{{ request()->is('gallery') ? 'active' : '' }}">Gallery</a></li>
