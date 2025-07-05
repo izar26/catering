@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Beranda')
+
 @section('interface')
     @php
       // Pecah berdasarkan paragraf (misalnya pakai newline ganda)
@@ -312,7 +314,7 @@
 
     </section><!-- /Events Section -->
 
-    {{-- Paket Buffet Section --}}
+    <!-- Paket Buffet Section -->
     <section id="paket" class="why-us section mt-custom">
       <div class="container section-title" data-aos="fade-up">
         <h2>PAKET BUFFET</h2>
@@ -342,4 +344,89 @@
         </div>
       </div>
     </section>
+
+    <!-- /Paket Buffet Section -->
+    <section id="info-pemesanan" class="info-pemesanan section">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Info Pemesanan</h2>
+      <p>Informasi pemesanan paket di {{ $profil->nama_perusahaan }}</p>
+    </div>
+
+    <div class="row gy-4 text-center">
+
+      <!-- Pemesanan -->
+      <div class="col-lg-4 col-md-6">
+        <div class="icon"><i class="bi bi-telephone" style="color: #f89d13; font-size: 40px;"></i></div>
+        <h5 class="mt-3">Pemesanan</h5>
+        <p>
+          Alamat: {{ $profil->alamat }}<br>
+          WhatsApp: <a href="https://wa.me/{{ $profil->no_wa }}">+{{ $profil->no_wa }}</a><br><br>
+          <strong>Service Hours:</strong><br>
+          {{ $profil->service_hours }}<br>
+          Fast Response Chat {{ $profil->fast_response}}
+        </p>
+      </div>
+
+      <!-- Pengiriman -->
+      <div class="col-lg-4 col-md-6">
+        @php
+          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pengiriman));
+        @endphp
+        <div class="icon"><i class="bi bi-truck" style="color: #f89d13; font-size: 40px;"></i></div>
+        <h5 class="mt-3">Pengiriman</h5>
+        @foreach ($parts as $paragraph)
+          @if (trim($paragraph) !== '')
+            <p>{{ $paragraph }}</p>
+          @endif
+        @endforeach
+      </div>
+      
+      <!-- Pembayaran -->
+      <div class="col-lg-4 col-md-6">
+        @php
+          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembayaran));
+        @endphp
+        <div class="icon"><i class="bi bi-cash-coin" style="color: #f89d13; font-size: 40px;"></i></div>
+        <h5 class="mt-3">Pembayaran</h5>
+        @foreach ($parts as $paragraph)
+          @if (trim($paragraph) !== '')
+            <p>{{ $paragraph }}</p>
+          @endif
+        @endforeach
+      </div>
+      
+      <!-- Pembatalan -->
+      <div class="col-lg-6 col-md-6">
+        @php
+          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembatalan));
+        @endphp
+        <div class="icon"><i class="bi bi-x-circle" style="color: #f89d13; font-size: 40px;"></i></div>
+        <h5 class="mt-3">Pembatalan</h5>
+        @foreach ($parts as $paragraph)
+          @if (trim($paragraph) !== '')
+            <p>{{ $paragraph }}</p>
+          @endif
+        @endforeach
+      </div>
+      
+      <!-- Harga & Biaya -->
+      <div class="col-lg-6 col-md-6">
+        @php
+          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_harga));
+        @endphp
+        <div class="icon"><i class="bi bi-tag" style="color: #f89d13; font-size: 40px;"></i></div>
+        <h5 class="mt-3">Harga & Biaya</h5>
+        @foreach ($parts as $paragraph)
+          @if (trim($paragraph) !== '')
+            <p>{{ $paragraph }}</p>
+          @endif
+        @endforeach
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
 @endsection

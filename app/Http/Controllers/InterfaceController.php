@@ -8,6 +8,7 @@ use App\Models\Produk;
 use App\Models\Galeri;
 use App\Models\ProfilPerusahaan;
 use App\Models\Testimoni;
+use App\Models\InfoPemesanan;
 
 class InterfaceController extends Controller
 {
@@ -27,8 +28,10 @@ class InterfaceController extends Controller
         // Ambil produk dengan tipe 'paketan'
         $paketans = Produk::where('tipe', 'paketan')->get();
 
+        $info = InfoPemesanan::first(); // Ambil informasi pemesanan pertama
+
         // Kirim ke view
-        return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans'));
+        return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans','info'));
     }
 
     public function menu()
@@ -36,6 +39,7 @@ class InterfaceController extends Controller
         // Ambil semua produk bertipe 'satuan' dan relasi kategorinya
         $menus = Produk::with('kategori')
             ->where('tipe', 'satuan')
+            ->where('is_unggulan', 0) // Hanya ambil produk yang tidak unggulan
             ->get();
 
         // Ambil daftar kategori unik dari produk yang sudah difilter
@@ -50,21 +54,56 @@ class InterfaceController extends Controller
 
 
     public function galeriFoto()
-{
-    $galeris = Galeri::where('tipe', 'foto')->latest()->get();
-    return view('interface.galeri-foto', compact('galeris'));
-}
+    {
+        $galeris = Galeri::where('tipe', 'foto')->latest()->get();
+        return view('interface.galeri-foto', compact('galeris'));
+    }
 
-public function galeriVideo()
-{
-    $galeris = Galeri::where('tipe', 'video')->latest()->get();
-    return view('interface.galeri-video', compact('galeris'));
-}
+    public function galeriVideo()
+    {
+        $galeris = Galeri::where('tipe', 'video')->latest()->get();
+        return view('interface.galeri-video', compact('galeris'));
+    }
 
 
     public function testimoni()
     {
         $testimonis = Testimoni::latest()->get(); // ambil semua testimoni
         return view('interface.testimoni', compact('testimonis'));
+    }
+
+    public function footerSearch(Request $request)
+    {
+        $keyword = strtolower(trim($request->q));
+
+        $routes = [
+            'home'      => '/',
+            'beranda'   => '/',
+            'about'     => '/#about',
+            'tentang'   => '/#about',
+            'special'  => '/#specials',
+            'unggulan'  => '/#specials',
+            'prevent'   => '/#preventif',
+            'preventif' => '/#preventif',
+            'paketan'   => '/#paket',
+            'paket buffet' => '/#paket',
+            'paket'     => '/#paket',
+            'menu'      => '/menu',
+            'gallery foto' => '/galeri/foto',
+            'foto'      => '/galeri/foto',
+            'gallery video' => '/galeri/video',
+            'video'     => '/galeri/video',
+            'testimoni' => '/testimoni',
+            'reservasi' => '/reservasi',
+            'kontak'    => '/kontak',
+        ];
+
+
+        if (array_key_exists($keyword, $routes)) {
+            return redirect($routes[$keyword]);
+        }
+
+        // Kalau kata tidak ditemukan, redirect ke halaman utama atau tampilkan pesan
+        return redirect('/')->with('notfound', 'Halaman tidak ditemukan untuk kata: ' . $keyword);
     }
 }

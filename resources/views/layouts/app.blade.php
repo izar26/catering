@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>catering</title>
+  <title>catering - @yield('title')</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -72,13 +72,12 @@
             <li><a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }}"><span>Menu</span></a></li>
             <li><a href="{{ route('testimoni')}}" class="{{ request()->is('testimoni') ? 'active' : '' }}"><span>Testimoni</span></a></li>
             <li class="dropdown">
-  <a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
-  <ul>
-    <li><a href="{{ route('galeri.foto') }}" class="{{ request()->is('galeri/foto') ? 'active' : '' }}">Foto</a></li>
-    <li><a href="{{ route('galeri.video') }}" class="{{ request()->is('galeri/video') ? 'active' : '' }}">Video</a></li>
-  </ul>
-</li>
-
+              <a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{{ route('galeri.foto') }}" class="{{ request()->is('galeri/foto') ? 'active' : '' }}">Foto</a></li>
+                <li><a href="{{ route('galeri.video') }}" class="{{ request()->is('galeri/video') ? 'active' : '' }}">Video</a></li>
+              </ul>
+            </li>
             <li><a href="{{ route('kontak')}}" class="{{ request()->is('kontak') ? 'active' : '' }}">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -104,11 +103,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Restaurantly</span>
+            <span class="sitename">{{ $profil->nama_perusahaan }}</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
+            <p><strong>Lokasi:</strong></p>
+            <p>{{ $profil->alamat }}</p>
             <p class="mt-3"><strong>Phone:</strong> <span>{{ $profil->no_wa }}</span></p>
             <p><strong>Email:</strong> <span>{{ $profil->email }}</span></p>
           </div>
@@ -121,35 +120,36 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
+          <h4>Tautan Penting</h4>
           <ul>
-            <li><a href="/#hero">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="/#hero">Beranda</a></li>
+            <li><a href="/#about">Tentang Kami</a></li>
+            <li><a href="/#paket">Paket Buffet</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/kontak">Kontak</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
+          <h4>Layanan Kami</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="/#paket">Paket Prasmanan</a></li>
+            <li><a href="/#specials">Menu Unggulan</a></li>
+            <li><a href="/galeri/foto">Galeri Foto</a></li>
+            <li><a href="/reservasi">Reservasi Acara</a></li>
+            <li><a href="/testimoni">Testimoni Pelanggan</a></li>
           </ul>
         </div>
 
         <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+          <h4>Pencarian</h4>
+          <p>Ketik kata kunci lalu tekan Enter untuk menuju halaman terkait.</p>
+          <form action="{{ route('footer.search') }}" method="GET" class="">
+            <div class="newsletter-form">
+              <input type="text" name="q"  placeholder="Contoh: menu">
+              <input type="submit" value="Cari">
+
+            </div>
           </form>
         </div>
 

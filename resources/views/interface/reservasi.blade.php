@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Reservasi')
+
 @section('interface')
 
     <!-- Book A Table Section -->

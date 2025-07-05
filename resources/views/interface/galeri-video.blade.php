@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Video Galeri')
+
 @section('interface')
 <section id="gallery" class="gallery section mt-custom">
   <div class="container section-title" data-aos="fade-up">

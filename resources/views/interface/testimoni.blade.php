@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Testimoni')
+
 @section('interface')
 
     <!-- Testimonials Section -->

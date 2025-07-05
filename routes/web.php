@@ -25,6 +25,7 @@ Route::get('/testimoni', [InterfaceController::class, 'testimoni'])->name('testi
 Route::get('/kontak', fn() => view('interface.kontak'))->name('kontak');
 Route::get('/reservasi', fn() => view('interface.reservasi'))->name('reservasi');
 Route::get('/paket-buffet', [InterfaceController::class, 'paketBuffet']);
+Route::get('/pencarian-redirect', [InterfaceController::class, 'footerSearch'])->name('footer.search');
 
 
 // Rute untuk Login & Logout
