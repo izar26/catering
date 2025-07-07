@@ -34,6 +34,7 @@
 }
 </style>
 
+
 <body class="index-page">
 
   <header id="header" class="header fixed-top">
@@ -55,7 +56,7 @@
     <div class="branding d-flex align-items-cente">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
           <!-- images logo-->
            <img src="{{ asset('storage/' . $profil->logo) }}" alt="">
           <h1 class="sitename">Catering</h1>
@@ -82,7 +83,7 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-book-a-table d-none d-xl-block" href="{{ route('testimoni-form')}}">Testimoni</a>
+        <a class="btn-book-a-table d-none d-xl-block" href="{{ route('testimoni-form')}}">Tulis Testimoni</a>
 
       </div>
 

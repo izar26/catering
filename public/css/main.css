@@ -1426,6 +1426,8 @@ section,
 .book-a-table .testimoni-form input[type=number],
 .book-a-table .testimoni-form input[type=date],
 .book-a-table .testimoni-form input[type=time],
+.book-a-table .testimoni-form input[type=file],
+.book-a-table .testimoni-form select,
 .book-a-table .testimoni-form textarea {
   font-size: 14px;
   padding: 10px 15px;
@@ -1441,6 +1443,9 @@ section,
 .book-a-table .testimoni-form input[type=number]:focus,
 .book-a-table .testimoni-form input[type=date]:focus,
 .book-a-table .testimoni-form input[type=time]:focus,
+.book-a-table .testimoni-form input[type=file]:focus,
+.book-a-table .testimoni-form input[type=file]:focus,
+.book-a-table .testimoni-form select:focus,
 .book-a-table .testimoni-form textarea:focus {
   border-color: var(--accent-color);
 }
@@ -1450,9 +1455,22 @@ section,
 .book-a-table .testimoni-form input[type=number]::placeholder,
 .book-a-table .testimoni-form input[type=date]::placeholder,
 .book-a-table .testimoni-form input[type=time]::placeholder,
+.book-a-table .testimoni-form select,
 .book-a-table .testimoni-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
+
+.book-a-table .testimoni-form input[type=file]::file-selector-button {
+  background-color: var(--accent-color);
+  color: black;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
 
 .book-a-table .testimoni-form button[type=submit] {
   color: var(--default-color);
