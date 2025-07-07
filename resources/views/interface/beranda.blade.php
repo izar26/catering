@@ -124,7 +124,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Specials</h2>
+        <h2>Spesial</h2>
         <p>Yuk, cek hidangan spesial dari kami!</p>
       </div><!-- End Section Title -->
 
