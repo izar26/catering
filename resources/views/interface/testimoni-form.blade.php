@@ -37,10 +37,6 @@
                   @endfor
               </select>
             </div>
-            <div class="col-lg-4 col-md-6 form-check form-switch ">
-              <input class="form-check-input ms-1" type="checkbox" name="tampilkan" role="switch" id="tampilkan" value="1" {{ old('tampilkan', $testimoni_edit->tampilkan ?? false) ? 'checked' : '' }}>
-              <label class="form-check-label" for="tampilkan">Tampilkan di Halaman Depan</label>
-            </div>
           </div>
 
           <div class="form-group mt-3">
