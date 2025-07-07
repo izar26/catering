@@ -78,7 +78,7 @@
                         <label class="form-label fw-bold">Gambar Utama</label>
                         <div class="file-upload-wrapper text-center">
                             <img id="image-preview" src="https://via.placeholder.com/400x300.png?text=Pilih+Gambar" alt="Image preview" class="img-fluid rounded mb-3" style="max-height: 180px; object-fit: contain;">
-                            <input type="file" name="gambar" id="image-input" class="d-none" onchange="previewImage(event)" accept="image/*">
+                            <input type="file" name="gambar" id="image-input" class="d-none" onchange="previewImage(event)" accept="image/*" required>
                             <label for="image-input" class="btn btn-outline-primary w-100">
                                 <i class="bi bi-upload me-2"></i>Pilih File Gambar
                             </label>
