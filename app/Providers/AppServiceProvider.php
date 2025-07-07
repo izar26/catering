@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Bagikan data profil ke semua view yang diawali dengan "interface."
-        View::composer('interface.*', function ($view) {
+        View::composer('*', function ($view) {
             $view->with('profil', ProfilPerusahaan::first());
         });
     }
