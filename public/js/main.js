@@ -110,6 +110,16 @@
   });
 
   /**
+   * Initiate videoLightbox
+   */
+  const videoLightbox = GLightbox({
+    selector: '.glightbox-video-beranda',
+    touchNavigation: false,
+    loop: false,
+    autoplayVideos: true
+  });
+
+  /**
    * Init isotope layout and filters
    */
   document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
@@ -178,6 +188,7 @@
       }
     }
   });
+  
 
   /**
    * Navmenu Scrollspy

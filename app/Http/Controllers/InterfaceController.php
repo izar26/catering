@@ -30,8 +30,10 @@ class InterfaceController extends Controller
 
         $info = InfoPemesanan::first(); // Ambil informasi pemesanan pertama
 
+        $video = Galeri::where('tipe', 'video')->latest()->first();  // ambil video terbaru
+
         // Kirim ke view
-        return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans','info'));
+        return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans','info','video'));
     }
 
     public function menu()
@@ -94,7 +96,7 @@ class InterfaceController extends Controller
             'gallery video' => '/galeri/video',
             'video'     => '/galeri/video',
             'testimoni' => '/testimoni',
-            'reservasi' => '/reservasi',
+            'testimoni-form' => '/testimoni-form',
             'kontak'    => '/kontak',
         ];
 

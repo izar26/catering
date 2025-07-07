@@ -83,7 +83,7 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-book-a-table d-none d-xl-block" href="{{ route('reservasi')}}">Reservasi</a>
+        <a class="btn-book-a-table d-none d-xl-block" href="{{ route('testimoni-form')}}">Testimoni</a>
 
       </div>
 

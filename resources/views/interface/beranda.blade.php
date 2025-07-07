@@ -25,7 +25,9 @@
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">
-            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+            @if ($video)
+              <a href="{{ $video->file }}" class="glightbox-video-beranda pulsating-play-btn"></a>
+            @endif
           </div>
         </div>
       </div>
@@ -381,7 +383,7 @@
           @endif
         @endforeach
       </div>
-      
+
       <!-- Pembayaran -->
       <div class="col-lg-4 col-md-6">
         @php
@@ -395,9 +397,11 @@
           @endif
         @endforeach
       </div>
-      
+
+      <div class="col-lg-2 col-md-6">
+      </div>
       <!-- Pembatalan -->
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-4 col-md-6">
         @php
           $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembatalan));
         @endphp
@@ -409,9 +413,9 @@
           @endif
         @endforeach
       </div>
-      
+
       <!-- Harga & Biaya -->
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-4 col-md-6">
         @php
           $parts = preg_split("/\r\n|\r|\n/", trim($info->info_harga));
         @endphp
@@ -423,7 +427,8 @@
           @endif
         @endforeach
       </div>
-
+      <div class="col-lg-2 col-md-6">
+      </div>
 
     </div>
   </div>

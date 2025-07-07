@@ -44,7 +44,13 @@ class TestimoniController extends Controller
 
     Testimoni::create($data);
 
-    return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil ditambahkan.');
+    if ($request->is('admin/*')) {
+        return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil ditambahkan.');
+    } else {
+        return redirect()->route('testimoni-form')->with('sent', 'Pesan kamu telah dikirim. Terima kasih!');
+    }
+
+
 }
 
     /**

@@ -89,7 +89,7 @@ h6 {
 
 /* PHP Email Form Messages
 ------------------------------*/
-.php-email-form .error-message {
+.testimoni-form .error-message {
   display: none;
   background: #df1529;
   color: #ffffff;
@@ -99,7 +99,7 @@ h6 {
   font-weight: 600;
 }
 
-.php-email-form .sent-message {
+.testimoni-form .sent-message {
   display: none;
   color: #ffffff;
   background: #059652;
@@ -109,7 +109,7 @@ h6 {
   font-weight: 600;
 }
 
-.php-email-form .loading {
+.testimoni-form .loading {
   display: none;
   background: var(--surface-color);
   text-align: center;
@@ -117,7 +117,7 @@ h6 {
   margin-bottom: 24px;
 }
 
-.php-email-form .loading:before {
+.testimoni-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -126,10 +126,10 @@ h6 {
   margin: 0 10px -6px 0;
   border: 3px solid var(--accent-color);
   border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
+  animation: testimoni-form-loading 1s linear infinite;
 }
 
-@keyframes php-email-form-loading {
+@keyframes testimoni-form-loading {
   0% {
     transform: rotate(0deg);
   }
@@ -1411,22 +1411,22 @@ section,
   background: color-mix(in srgb, var(--default-color), transparent 97%);
 }
 
-.book-a-table .php-email-form {
+.book-a-table .testimoni-form {
   padding: 30px;
 }
 
 @media (max-width: 575px) {
-  .book-a-table .php-email-form {
+  .book-a-table .testimoni-form {
     padding: 20px;
   }
 }
 
-.book-a-table .php-email-form input[type=text],
-.book-a-table .php-email-form input[type=email],
-.book-a-table .php-email-form input[type=number],
-.book-a-table .php-email-form input[type=date],
-.book-a-table .php-email-form input[type=time],
-.book-a-table .php-email-form textarea {
+.book-a-table .testimoni-form input[type=text],
+.book-a-table .testimoni-form input[type=email],
+.book-a-table .testimoni-form input[type=number],
+.book-a-table .testimoni-form input[type=date],
+.book-a-table .testimoni-form input[type=time],
+.book-a-table .testimoni-form textarea {
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
@@ -1436,25 +1436,25 @@ section,
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
-.book-a-table .php-email-form input[type=text]:focus,
-.book-a-table .php-email-form input[type=email]:focus,
-.book-a-table .php-email-form input[type=number]:focus,
-.book-a-table .php-email-form input[type=date]:focus,
-.book-a-table .php-email-form input[type=time]:focus,
-.book-a-table .php-email-form textarea:focus {
+.book-a-table .testimoni-form input[type=text]:focus,
+.book-a-table .testimoni-form input[type=email]:focus,
+.book-a-table .testimoni-form input[type=number]:focus,
+.book-a-table .testimoni-form input[type=date]:focus,
+.book-a-table .testimoni-form input[type=time]:focus,
+.book-a-table .testimoni-form textarea:focus {
   border-color: var(--accent-color);
 }
 
-.book-a-table .php-email-form input[type=text]::placeholder,
-.book-a-table .php-email-form input[type=email]::placeholder,
-.book-a-table .php-email-form input[type=number]::placeholder,
-.book-a-table .php-email-form input[type=date]::placeholder,
-.book-a-table .php-email-form input[type=time]::placeholder,
-.book-a-table .php-email-form textarea::placeholder {
+.book-a-table .testimoni-form input[type=text]::placeholder,
+.book-a-table .testimoni-form input[type=email]::placeholder,
+.book-a-table .testimoni-form input[type=number]::placeholder,
+.book-a-table .testimoni-form input[type=date]::placeholder,
+.book-a-table .testimoni-form input[type=time]::placeholder,
+.book-a-table .testimoni-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.book-a-table .php-email-form button[type=submit] {
+.book-a-table .testimoni-form button[type=submit] {
   color: var(--default-color);
   border: 2px solid var(--accent-color);
   background: transparent;
@@ -1463,7 +1463,7 @@ section,
   border-radius: 50px;
 }
 
-.book-a-table .php-email-form button[type=submit]:hover {
+.book-a-table .testimoni-form button[type=submit]:hover {
   background: var(--accent-color);
 }
 
@@ -1697,13 +1697,13 @@ section,
   font-size: 14px;
 }
 
-.contact .php-email-form {
+.contact .testimoni-form {
   height: 100%;
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
+.contact .testimoni-form input[type=text],
+.contact .testimoni-form input[type=email],
+.contact .testimoni-form textarea {
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
@@ -1713,19 +1713,19 @@ section,
   border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
+.contact .testimoni-form input[type=text]:focus,
+.contact .testimoni-form input[type=email]:focus,
+.contact .testimoni-form textarea:focus {
   border-color: var(--accent-color);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
+.contact .testimoni-form input[type=text]::placeholder,
+.contact .testimoni-form input[type=email]::placeholder,
+.contact .testimoni-form textarea::placeholder {
   color: color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .testimoni-form button[type=submit] {
   color: var(--default-color);
   background: none;
   border: 2px solid var(--accent-color);
@@ -1734,7 +1734,7 @@ section,
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .testimoni-form button[type=submit]:hover {
   background: var(--accent-color);
 }
 

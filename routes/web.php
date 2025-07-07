@@ -23,10 +23,10 @@ Route::get('/galeri/foto', [InterfaceController::class, 'galeriFoto'])->name('ga
 Route::get('/galeri/video', [InterfaceController::class, 'galeriVideo'])->name('galeri.video');
 Route::get('/testimoni', [InterfaceController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak', fn() => view('interface.kontak'))->name('kontak');
-Route::get('/reservasi', fn() => view('interface.reservasi'))->name('reservasi');
+Route::get('/testimoni-form', fn() => view('interface.testimoni-form'))->name('testimoni-form');
 Route::get('/paket-buffet', [InterfaceController::class, 'paketBuffet']);
 Route::get('/pencarian-redirect', [InterfaceController::class, 'footerSearch'])->name('footer.search');
-
+Route::post('/testimoni-form', [TestimoniController::class, 'store'])->name('testimoni.store');
 
 // Rute untuk Login & Logout
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
