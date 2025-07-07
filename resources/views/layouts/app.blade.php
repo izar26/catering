@@ -67,8 +67,8 @@
             <li><a href="/#hero" class="{{ request()->is('/') ? 'active' : '' }}">Home<br></a></li>
             <li><a href="/#about">About</a></li>
             <li><a href="/#specials">Specials</a></li>
-            <li><a href="/#events">Events</a></li>
             <li><a href="/#paket">Paket</a></li>
+            <li><a href="/#events">Events</a></li>
             <li><a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }}"><span>Menu</span></a></li>
             <li><a href="{{ route('testimoni')}}" class="{{ request()->is('testimoni') ? 'active' : '' }}"><span>Testimoni</span></a></li>
             <li class="dropdown">

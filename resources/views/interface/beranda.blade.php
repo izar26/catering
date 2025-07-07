@@ -125,7 +125,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Specials</h2>
-        <p>Check Our Specials</p>
+        <p>Yuk, cek hidangan spesial dari kami!</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -164,6 +164,37 @@
     </section>
     <!-- /Specials Section -->
 
+
+    <!-- Paket Buffet Section -->
+    <section id="paket" class="why-us section mt-custom">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>PAKET BUFFET</h2>
+        <p>Pilihan paket buffet terbaik untuk berbagai jenis acara Anda.</p>
+      </div>
+    
+      <div class="container">
+        <div class="row gy-4">
+          @foreach($paketans as $index => $paket)
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+            <div class="card-item d-flex flex-column align-items-center text-center">
+              <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+              <!-- Tambahkan gambar di sini -->
+              <img src="{{ asset('storage/' . $paket->gambar) ?? asset('img/kosong.png') }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
+              <h4>
+                <a href="#modal-paket-{{ $paket->id }}" class="glightbox" data-gallery="paket-gallery" data-type="inline">
+                  {{ $paket->nama }}
+                </a>
+              </h4>
+              <p>Rp {{ number_format($paket->harga, 0, ',', '.') }}</p>
+            </div>
+            
+            {{-- Modal Partial --}}
+            @include('components.paketan-modal', ['paket' => $paket, 'profil' => $profil])
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </section><!-- /Paket Buffet Section -->
     
     <!-- Events Section -->
     <section id="events" class="events section">
@@ -239,37 +270,6 @@
       </div>
 
     </section><!-- /Events Section -->
-
-    <!-- Paket Buffet Section -->
-    <section id="paket" class="why-us section mt-custom">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>PAKET BUFFET</h2>
-        <p>Pilihan paket buffet terbaik untuk berbagai jenis acara Anda.</p>
-      </div>
-    
-      <div class="container">
-        <div class="row gy-4">
-          @foreach($paketans as $index => $paket)
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-            <div class="card-item d-flex flex-column align-items-center text-center">
-              <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-              <!-- Tambahkan gambar di sini -->
-              <img src="{{ asset('storage/' . $paket->gambar) ?? asset('img/kosong.png') }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
-              <h4>
-                <a href="#modal-paket-{{ $paket->id }}" class="glightbox" data-gallery="paket-gallery" data-type="inline">
-                  {{ $paket->nama }}
-                </a>
-              </h4>
-              <p>Rp {{ number_format($paket->harga, 0, ',', '.') }}</p>
-            </div>
-            
-            {{-- Modal Partial --}}
-            @include('components.paketan-modal', ['paket' => $paket, 'profil' => $profil])
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section><!-- /Paket Buffet Section -->
 
     <!-- Info Pemesanan Section -->
     <section id="info-pemesanan" class="info-pemesanan section">
