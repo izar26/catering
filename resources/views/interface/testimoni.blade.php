@@ -51,7 +51,7 @@
                   <span>{{ $testimoni->isi }}</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                   </p>
-                  <img src="{{ asset('storage/' . $testimoni->foto) }}" class="testimonial-img" alt="">
+                  <img src="{{ asset('storage/' . $testimoni->foto) ?? asset('img/kosong.png') }}" class="testimonial-img" alt="">
                   <h3>{{ $testimoni->nama }}</h3>
                   <h4>{{ $testimoni->aktor }}</h4>
                   {{-- nih yang atas itu aktor sama saya ga di hidupin yang bawah karna belum ada colum nya --}}

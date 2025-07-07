@@ -138,21 +138,6 @@
                   <a class="nav-link @if($loop->first) active show @endif" data-bs-toggle="tab" href="#produk-{{ $produk->id }}">{{ $produk->nama }}</a>
                 </li>
               @endforeach
-              {{-- <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Modi sit est</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-2">Unde praesentium sed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-3">Pariatur explicabo vel</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-4">Nostrum qui quasi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-5">Iusto ut expedita aut</a>
-              </li> --}}
             </ul>
           </div>
           <div class="col-lg-9 mt-4 mt-lg-0">
@@ -165,72 +150,11 @@
                       <p>{{ $produk->deskripsi }}</p>
                     </div>
                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{{ asset('storage/' . $produk->gambar) }}" alt="" class="img-fluid">
+                      <img src="{{ asset('storage/' . $produk->gambar) ?? asset('img/kosong.png') }}" alt="" class="img-fluid">
                     </div>
                   </div>
                 </div>
               @endforeach
-
-              {{-- <div class="tab-pane active show" id="specials-tab-1">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Architecto ut aperiam autem id</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{{ asset('img/specials-1.png') }}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-2">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Et blanditiis nemo veritatis excepturi</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{{ asset('img/specials-2.png') }}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-3">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                    <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                    <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{{ asset('img/specials-3.png') }}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-4">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                    <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                    <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{{ asset('img/specials-4.png') }}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-5">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                    <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                    <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{{ asset('img/specials-5.png') }}" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div> --}}
             </div>
           </div>
         </div>
@@ -277,7 +201,7 @@
               <div class="swiper-slide">
                 <div class="row gy-4 event-item">
                   <div class="col-lg-6">
-                    <img src="{{ asset('storage/' . $produk->gambar) }}" class="img-fluid" alt="">
+                    <img src="{{ asset('storage/' . $produk->gambar) ?? asset('img/kosong.png') }}" class="img-fluid" alt="">
                   </div>
                   <div class="col-lg-6 pt-4 pt-lg-0 content">
                     <h3>{{ $produk->nama }}</h3>
@@ -330,7 +254,7 @@
             <div class="card-item d-flex flex-column align-items-center text-center">
               <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
               <!-- Tambahkan gambar di sini -->
-              <img src="{{ asset('storage/' . $paket->gambar) }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
+              <img src="{{ asset('storage/' . $paket->gambar) ?? asset('img/kosong.png') }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
               <h4>
                 <a href="#modal-paket-{{ $paket->id }}" class="glightbox" data-gallery="paket-gallery" data-type="inline">
                   {{ $paket->nama }}
@@ -345,93 +269,92 @@
           @endforeach
         </div>
       </div>
-    </section>
+    </section><!-- /Paket Buffet Section -->
 
-    <!-- /Paket Buffet Section -->
+    <!-- Info Pemesanan Section -->
     <section id="info-pemesanan" class="info-pemesanan section">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Info Pemesanan</h2>
-      <p>Informasi pemesanan paket di {{ $profil->nama_perusahaan }}</p>
-    </div>
-
-    <div class="row gy-4 text-center">
-
-      <!-- Pemesanan -->
-      <div class="col-lg-4 col-md-6">
-        <div class="icon"><i class="bi bi-telephone" style="color: #f89d13; font-size: 40px;"></i></div>
-        <h5 class="mt-3">Pemesanan</h5>
-        <p>
-          Alamat: {{ $profil->alamat }}<br>
-          WhatsApp: <a href="https://wa.me/{{ $profil->no_wa }}">+{{ $profil->no_wa }}</a><br><br>
-          <strong>Service Hours:</strong><br>
-          {{ $profil->service_hours }}<br>
-          Fast Response Chat {{ $profil->fast_response}}
-        </p>
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Info Pemesanan</h2>
+          <p>Informasi pemesanan paket di {{ $profil->nama_perusahaan }}</p>
+        </div>
+      
+        <div class="row gy-4 text-center">
+        
+          <!-- Pemesanan -->
+          <div class="col-lg-4 col-md-6">
+            <div class="icon"><i class="bi bi-telephone" style="color: #f89d13; font-size: 40px;"></i></div>
+            <h5 class="mt-3">Pemesanan</h5>
+            <p>
+              Alamat: {{ $profil->alamat }}<br>
+              WhatsApp: <a href="https://wa.me/{{ $profil->no_wa }}">+{{ $profil->no_wa }}</a><br><br>
+              <strong>Service Hours:</strong><br>
+              {{ $profil->service_hours }}<br>
+              Fast Response Chat {{ $profil->fast_response}}
+            </p>
+          </div>
+        
+          <!-- Pengiriman -->
+          <div class="col-lg-4 col-md-6">
+            @php
+              $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pengiriman));
+            @endphp
+            <div class="icon"><i class="bi bi-truck" style="color: #f89d13; font-size: 40px;"></i></div>
+            <h5 class="mt-3">Pengiriman</h5>
+            @foreach ($parts as $paragraph)
+              @if (trim($paragraph) !== '')
+                <p>{{ $paragraph }}</p>
+              @endif
+            @endforeach
+          </div>
+        
+          <!-- Pembayaran -->
+          <div class="col-lg-4 col-md-6">
+            @php
+              $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembayaran));
+            @endphp
+            <div class="icon"><i class="bi bi-cash-coin" style="color: #f89d13; font-size: 40px;"></i></div>
+            <h5 class="mt-3">Pembayaran</h5>
+            @foreach ($parts as $paragraph)
+              @if (trim($paragraph) !== '')
+                <p>{{ $paragraph }}</p>
+              @endif
+            @endforeach
+          </div>
+        
+          <div class="col-lg-2 col-md-6">
+          </div>
+          <!-- Pembatalan -->
+          <div class="col-lg-4 col-md-6">
+            @php
+              $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembatalan));
+            @endphp
+            <div class="icon"><i class="bi bi-x-circle" style="color: #f89d13; font-size: 40px;"></i></div>
+            <h5 class="mt-3">Pembatalan</h5>
+            @foreach ($parts as $paragraph)
+              @if (trim($paragraph) !== '')
+                <p>{{ $paragraph }}</p>
+              @endif
+            @endforeach
+          </div>
+        
+          <!-- Harga & Biaya -->
+          <div class="col-lg-4 col-md-6">
+            @php
+              $parts = preg_split("/\r\n|\r|\n/", trim($info->info_harga));
+            @endphp
+            <div class="icon"><i class="bi bi-tag" style="color: #f89d13; font-size: 40px;"></i></div>
+            <h5 class="mt-3">Harga & Biaya</h5>
+            @foreach ($parts as $paragraph)
+              @if (trim($paragraph) !== '')
+                <p>{{ $paragraph }}</p>
+              @endif
+            @endforeach
+          </div>
+          <div class="col-lg-2 col-md-6">
+          </div>
+        
+        </div>
       </div>
-
-      <!-- Pengiriman -->
-      <div class="col-lg-4 col-md-6">
-        @php
-          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pengiriman));
-        @endphp
-        <div class="icon"><i class="bi bi-truck" style="color: #f89d13; font-size: 40px;"></i></div>
-        <h5 class="mt-3">Pengiriman</h5>
-        @foreach ($parts as $paragraph)
-          @if (trim($paragraph) !== '')
-            <p>{{ $paragraph }}</p>
-          @endif
-        @endforeach
-      </div>
-
-      <!-- Pembayaran -->
-      <div class="col-lg-4 col-md-6">
-        @php
-          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembayaran));
-        @endphp
-        <div class="icon"><i class="bi bi-cash-coin" style="color: #f89d13; font-size: 40px;"></i></div>
-        <h5 class="mt-3">Pembayaran</h5>
-        @foreach ($parts as $paragraph)
-          @if (trim($paragraph) !== '')
-            <p>{{ $paragraph }}</p>
-          @endif
-        @endforeach
-      </div>
-
-      <div class="col-lg-2 col-md-6">
-      </div>
-      <!-- Pembatalan -->
-      <div class="col-lg-4 col-md-6">
-        @php
-          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_pembatalan));
-        @endphp
-        <div class="icon"><i class="bi bi-x-circle" style="color: #f89d13; font-size: 40px;"></i></div>
-        <h5 class="mt-3">Pembatalan</h5>
-        @foreach ($parts as $paragraph)
-          @if (trim($paragraph) !== '')
-            <p>{{ $paragraph }}</p>
-          @endif
-        @endforeach
-      </div>
-
-      <!-- Harga & Biaya -->
-      <div class="col-lg-4 col-md-6">
-        @php
-          $parts = preg_split("/\r\n|\r|\n/", trim($info->info_harga));
-        @endphp
-        <div class="icon"><i class="bi bi-tag" style="color: #f89d13; font-size: 40px;"></i></div>
-        <h5 class="mt-3">Harga & Biaya</h5>
-        @foreach ($parts as $paragraph)
-          @if (trim($paragraph) !== '')
-            <p>{{ $paragraph }}</p>
-          @endif
-        @endforeach
-      </div>
-      <div class="col-lg-2 col-md-6">
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    </section><!-- /Info Pemesanan Section -->
 @endsection
