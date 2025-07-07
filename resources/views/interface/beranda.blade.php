@@ -179,13 +179,16 @@
             <div class="card-item d-flex flex-column align-items-center text-center">
               <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
               <!-- Tambahkan gambar di sini -->
-              <img src="{{ asset('storage/' . $paket->gambar) ?? asset('img/kosong.png') }}" alt="{{ $paket->nama }}" class="img-fluid mb-3" style="width:50%; height:50%; object-fit:cover;">
+              <img src="{{ asset('storage/' . $paket->gambar) ?? asset('img/kosong.png') }}" alt="{{ $paket->nama }}" class="img-fluid mb-3 img-modal" style="width:50%; height:50%; object-fit:cover;">
               <h4>
-                <a href="#modal-paket-{{ $paket->id }}" class="glightbox" data-gallery="paket-gallery" data-type="inline">
+                <a href="">
                   {{ $paket->nama }}
                 </a>
               </h4>
               <p>Rp {{ number_format($paket->harga, 0, ',', '.') }}</p>
+              <button type="button" class="button-custom mt-2" data-bs-toggle="modal" data-bs-target="#modalPaket{{ $paket->id }}">
+                Lihat Detail
+              </button>
             </div>
             
             {{-- Modal Partial --}}
