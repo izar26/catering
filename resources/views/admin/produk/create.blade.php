@@ -55,7 +55,7 @@
                         <select name="tipe" id="tipe" class="form-select" required>
                             <option value="satuan" {{ old('tipe') == 'satuan' ? 'selected' : '' }}>Satuan</option>
                             <option value="paketan" {{ old('tipe') == 'paketan' ? 'selected' : '' }}>Paketan</option>
-                            <option value="prevent" {{ old('tipe') == 'prevent' ? 'selected' : '' }}>Pre-order</option>
+                            <option value="prevent" {{ old('tipe') == 'prevent' ? 'selected' : '' }}>Pre-event</option>
                         </select>
                     </div>
 
