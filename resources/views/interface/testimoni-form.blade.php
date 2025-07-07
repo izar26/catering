@@ -14,7 +14,7 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+        
         <form action="{{ route('testimoni.store')}}" method="post" role="form" class="testimoni-form" enctype="multipart/form-data">
           @csrf
           <div class="row gy-4">
@@ -46,6 +46,9 @@
           <div class="text-center mt-3">
             <div class="loading">Loading</div>
             <div class="error-message"></div>
+            @if(session('sent'))
+              <div class="sent-message">{{ session('sent') }}</div>
+            @endif
             <button type="submit">Submit</button>
           </div>
         </form><!-- End Reservation Form -->
@@ -54,6 +57,21 @@
 
     </section>
     <!-- /Book A Table Section -->
+
+    <script>
+      // Saat DOM selesai dimuat
+      document.addEventListener('DOMContentLoaded', function () {
+        const sentMessage = document.querySelector('.sent-message');
+        if (sentMessage) {
+          setTimeout(() => {
+            sentMessage.style.opacity = '0';
+            setTimeout(() => {
+              sentMessage.style.display = 'none';
+            }, 500); // tunggu animasi fade out selesai
+          }, 3000); // tunggu 3 detik sebelum mulai fade out
+        }
+      });
+    </script>
 
 
 @endsection

@@ -44,27 +44,35 @@
           <div class="swiper-wrapper">
 
             @foreach ( $testimonis as $testimoni )
-              <div class="swiper-slide">
-                <div class="testimonial-item" ="">
-              <p>
-                <i class=" bi bi-quote quote-icon-left"></i>
-                  <span>{{ $testimoni->isi }}</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                  </p>
-                  <img src="{{ $testimoni->foto ? asset('storage/' . $testimoni->foto) : asset('img/kosong.png') }}" class="testimonial-img" alt="">
-                  <h3>{{ $testimoni->nama }}</h3>
-                  <h4>{{ $testimoni->aktor }}</h4>
-                  {{-- nih yang atas itu aktor sama saya ga di hidupin yang bawah karna belum ada colum nya --}}
-                  {{-- <h4>{{ $testimoni->aktor }}</h4> --}}
-                </div>
-              </div><!-- End testimonial item -->
+              @if ($testimoni->tampilkan)
+                <div class="swiper-slide">
+                  <div class="testimonial-item" ="">
+                    <p>
+                      <i class=" bi bi-quote quote-icon-left"></i>
+                        <span>{{ $testimoni->isi }}</span>
+                        <i class="bi bi-quote quote-icon-right"></i>
+
+                        {{-- Bintang di pojok kanan bawah --}}
+                        <span class="rating-bawah-kanan" >
+                          @for ($i = 1; $i <= 5; $i++)
+                          <i class="bi {{ $i <= $testimoni->rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary' }}"></i>
+                          @endfor
+                        </span>
+                    </p>
+                    {{-- Rating bintang di bawah isi testimoni --}}
+                    <img src="{{ $testimoni->foto ? asset('storage/' . $testimoni->foto) : asset('img/kosong.png') }}" class="testimonial-img" alt="">
+                    <h3>{{ $testimoni->nama }}</h3>
+                    <h4>{{ $testimoni->aktor }}</h4>
+                    {{-- nih yang atas itu aktor sama saya ga di hidupin yang bawah karna belum ada colum nya --}}
+                    {{-- <h4>{{ $testimoni->aktor }}</h4> --}}
+                  </div>
+                </div><!-- End testimonial item -->
+              @endif
             @endforeach
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
-
     </section><!-- /Testimonials Section -->
 @endsection

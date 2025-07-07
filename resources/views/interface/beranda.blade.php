@@ -18,10 +18,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
-            <h2 data-aos="fade-up" data-aos-delay="100">Welcome to <span>{{ $profil->nama_perusahaan }}</span></h2>
+            <h2 data-aos="fade-up" data-aos-delay="100">Halo, selamat datang di  <span>{{ $profil->nama_perusahaan }}</span></h2>
             <p data-aos="fade-up" data-aos-delay="200">{{ $profil->deskripsi }}</p>
             <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-              <a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }} cta-btn">Our Menu</a>
+              <a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }} cta-btn">Lihat Menu</a>
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">

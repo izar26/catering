@@ -83,7 +83,7 @@ class InterfaceController extends Controller
             'beranda'   => '/',
             'about'     => '/#about',
             'tentang'   => '/#about',
-            'special'  => '/#specials',
+            'spesial'  => '/#specials',
             'unggulan'  => '/#specials',
             'prevent'   => '/#preventif',
             'preventif' => '/#preventif',

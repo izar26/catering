@@ -58,7 +58,7 @@
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Hubungi Kami</h3>
-                <a href="https://wa.me/{{ $profil->no_wa}}">{{ $profil->no_wa }}</a>
+                <a href="https://wa.me/{{ $profil->no_wa}}" target="_blank">{{ $profil->no_wa }}</a>
               </div>
             </div>
           </div>

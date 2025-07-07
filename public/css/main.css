@@ -100,13 +100,14 @@ h6 {
 }
 
 .testimoni-form .sent-message {
-  display: none;
+  /* display: none; */
   color: #ffffff;
   background: #059652;
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  transition: opacity 0.5s ease; /* animasi fade out */
 }
 
 .testimoni-form .loading {
@@ -1549,6 +1550,12 @@ section,
   border-radius: 6px;
   position: relative;
   z-index: 1;
+}
+
+.testimonials .testimonial-item .rating-bawah-kanan {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }
 
 .testimonials .swiper-wrapper {
