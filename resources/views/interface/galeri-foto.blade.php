@@ -17,8 +17,9 @@
             <a href="{{ asset('storage/' . $galeri->file) }}" 
                class="glightbox" 
                data-gallery="images-gallery" 
-               data-title="{{ $galeri->judul }}" 
-               data-description="{{ $galeri->deskripsi }}">
+               {{-- data-title="{{ $galeri->judul }}" 
+               data-description="{{ $galeri->deskripsi }}" --}}
+               >
               <div class="ratio ratio-1x1">
                 <img src="{{ asset('storage/' . $galeri->file) }}" 
                      alt="{{ $galeri->judul }}" 
@@ -26,6 +27,7 @@
                      style="object-fit: cover;">
               </div>
             </a>
+            <h5 class="text-center mt-3">{{$galeri->judul}}</h5>
           </div>
         </div>
       @endforeach
