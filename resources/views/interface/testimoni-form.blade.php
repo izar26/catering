@@ -57,10 +57,10 @@
               <input type="text" class="form-control" name="aktor" id="aktor" placeholder="Profesi Kamu" required="">
             </div>
             <div class="col-lg-4 col-md-6">
-              <input type="file" class="form-control" name="foto" id="phone" placeholder="Your Phone" accept="image/*" >
+              <input type="file" class="form-control" name="foto" id="phone" placeholder="Your Phone" accept="image/*" required="">
             </div>
             <div class="col-lg-4 col-md-6">
-              <input type="text" class="form-control" name="nomor_hp" id="phone" placeholder="Your Phone" accept="image/*" >
+              <input type="text" class="form-control" name="nomor_hp" id="phone" placeholder="Your Phone" required="">
             </div>
             <div class="col-lg-4 col-md-6 div-star">
               <div class="star-rating">
@@ -70,7 +70,7 @@
                 <span class="star" data-value="4">&#9733;</span>
                 <span class="star" data-value="5">&#9733;</span>
               </div>
-              <input type="hidden" name="rating" id="rating">
+              <input type="hidden" name="rating" id="rating" required="">
             </div>
           </div>
 
