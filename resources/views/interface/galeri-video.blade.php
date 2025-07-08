@@ -12,29 +12,31 @@
   <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row">
       @foreach ($galeris as $galeri)
-        @php
-            $embedLink = $galeri->file;
+        @if ($galeri->status == 1)
+          @php
+              $embedLink = $galeri->file;
 
-            if (str_contains($galeri->file, 'youtu.be')) {
-                $videoId = preg_replace('/https:\/\/youtu\.be\/([^\?]+)/', '$1', $galeri->file);
-                $embedLink = "https://www.youtube.com/embed/$videoId";
-            } elseif (str_contains($galeri->file, 'watch?v=')) {
-                $videoId = explode('watch?v=', $galeri->file)[1];
-                $videoId = explode('&', $videoId)[0];
-                $embedLink = "https://www.youtube.com/embed/$videoId";
-            }
-        @endphp
+              if (str_contains($galeri->file, 'youtu.be')) {
+                  $videoId = preg_replace('/https:\/\/youtu\.be\/([^\?]+)/', '$1', $galeri->file);
+                  $embedLink = "https://www.youtube.com/embed/$videoId";
+              } elseif (str_contains($galeri->file, 'watch?v=')) {
+                  $videoId = explode('watch?v=', $galeri->file)[1];
+                  $videoId = explode('&', $videoId)[0];
+                  $embedLink = "https://www.youtube.com/embed/$videoId";
+              }
+          @endphp
 
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
-            <iframe 
-              src="{{ $embedLink }}" 
-              title="{{ $galeri->judul }}" 
-              allowfullscreen 
-              class="w-100 h-100">
-            </iframe>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+              <iframe 
+                src="{{ $embedLink }}" 
+                title="{{ $galeri->judul }}" 
+                allowfullscreen 
+                class="w-100 h-100">
+              </iframe>
+            </div>
           </div>
-        </div>
+        @endif
       @endforeach
     </div>
   </div>

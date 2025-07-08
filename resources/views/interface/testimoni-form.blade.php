@@ -7,9 +7,9 @@
   <style>
   .div-star {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+    /* justify-content: center;
+    align-items: center; */
+    margin-top: 20px;
   }
   .star-rating {
     direction: ltr;
@@ -50,16 +50,19 @@
         <form action="{{ route('testimoni.store')}}" method="post" role="form" class="testimoni-form" enctype="multipart/form-data">
           @csrf
           <div class="row gy-4">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
               <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Kamu" required="">
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
               <input type="text" class="form-control" name="aktor" id="aktor" placeholder="Profesi Kamu" required="">
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
               <input type="file" class="form-control" name="foto" id="phone" placeholder="Your Phone" accept="image/*" >
             </div>
-            <div class="col-lg-3 col-md-6 div-star">
+            <div class="col-lg-4 col-md-6">
+              <input type="text" class="form-control" name="nomor_hp" id="phone" placeholder="Your Phone" accept="image/*" >
+            </div>
+            <div class="col-lg-4 col-md-6 div-star">
               <div class="star-rating">
                 <span class="star" data-value="1">&#9733;</span>
                 <span class="star" data-value="2">&#9733;</span>
