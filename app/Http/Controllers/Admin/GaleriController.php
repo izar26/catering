@@ -9,51 +9,53 @@ use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
-    /**
-     * Menampilkan halaman manajemen galeri (daftar dan form).
-     */
-    public function index(Galeri $galeri = null)
+    public function index(Request $request)
     {
-        return view('admin.galeri.index', [
-            'galeris' => Galeri::latest()->paginate(9),
-            'galeri_edit' => $galeri
-        ]);
+        $query = Galeri::query();
+
+        if ($request->filled('q')) {
+            $query->where('judul', 'like', '%' . $request->q . '%');
+        }
+
+        $galeri_edit = null;
+        if ($request->filled('edit')) {
+            $galeri_edit = Galeri::find($request->edit);
+        }
+
+        $galeris = $query->latest()->paginate(9);
+
+        return view('admin.galeri.index', compact('galeris', 'galeri_edit'));
     }
 
-    /**
-     * Menyimpan item galeri baru.
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'tipe' => 'required|in:foto,video',
-            'file_upload' => 'required_if:tipe,foto|image|max:5120', // Maks 5MB
-            'video_link' => 'nullable|required_if:tipe,video|url',
+            'file_upload' => 'required_if:tipe,foto|image|max:5120',
+            'video_link' => 'nullable|url',
         ]);
 
-        // Jika tipenya foto, proses upload dan simpan path-nya di kolom 'file'
+        if ($request->tipe === 'video' && !$request->video_link) {
+            return back()->withErrors(['video_link' => 'Link video wajib diisi.'])->withInput();
+        }
+
+        $data['status'] = $request->status;
+
         if ($request->tipe === 'foto' && $request->hasFile('file_upload')) {
             $data['file'] = $request->file('file_upload')->store('galeri', 'public');
-        } 
-        // Jika tipenya video, simpan link-nya di kolom 'file'
-        elseif ($request->tipe === 'video') {
+        } elseif ($request->tipe === 'video') {
             $data['file'] = $request->video_link;
         }
 
-        // Hapus field sementara yang tidak ada di database
-        unset($data['file_upload']);
-        unset($data['video_link']);
+        unset($data['file_upload'], $data['video_link']);
 
         Galeri::create($data);
 
         return redirect()->route('admin.galeri.index')->with('success', 'Item galeri berhasil ditambahkan.');
     }
 
-    /**
-     * Mengupdate item galeri yang ada.
-     */
     public function update(Request $request, Galeri $galeri)
     {
         $data = $request->validate([
@@ -63,40 +65,31 @@ class GaleriController extends Controller
             'file_upload' => 'nullable|image|max:5120',
             'video_link' => 'nullable|required_if:tipe,video|url',
         ]);
-        
+
+        $data['status'] = $request->status;
         $tipeLama = $galeri->tipe;
 
-        // Jika ada file foto baru yang di-upload
         if ($request->hasFile('file_upload')) {
-            // Hapus file foto lama jika ada
             if ($tipeLama === 'foto' && $galeri->file) {
                 Storage::disk('public')->delete($galeri->file);
             }
             $data['file'] = $request->file('file_upload')->store('galeri', 'public');
-        } 
-        // Jika tipe baru adalah 'video'
-        elseif ($request->tipe === 'video') {
-            // Hapus file foto lama jika tipe sebelumnya adalah 'foto'
+        } elseif ($request->tipe === 'video') {
             if ($tipeLama === 'foto' && $galeri->file) {
                 Storage::disk('public')->delete($galeri->file);
             }
             $data['file'] = $request->video_link;
         }
 
-        unset($data['file_upload']);
-        unset($data['video_link']);
+        unset($data['file_upload'], $data['video_link']);
 
         $galeri->update($data);
 
         return redirect()->route('admin.galeri.index')->with('success', 'Item galeri berhasil diperbarui.');
     }
 
-    /**
-     * Menghapus item galeri.
-     */
     public function destroy(Galeri $galeri)
     {
-        // Hapus file foto dari storage jika ada
         if ($galeri->tipe === 'foto' && $galeri->file) {
             Storage::disk('public')->delete($galeri->file);
         }

@@ -19,5 +19,6 @@ class Galeri extends Model
         'deskripsi',
         'tipe',
         'file',
+        "status",
     ];
 }

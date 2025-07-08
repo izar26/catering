@@ -50,12 +50,11 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::put('profil-perusahaan', [ProfilPerusahaanController::class, 'update'])->name('profil.update');
     
     Route::prefix('galeri')->name('galeri.')->group(function () {
-    Route::get('/', [GaleriController::class, 'index'])->name('index');
-    Route::post('/', [GaleriController::class, 'store'])->name('store');
-    Route::get('/{galeri}/edit', [GaleriController::class, 'index'])->name('edit');
-    Route::put('/{galeri}', [GaleriController::class, 'update'])->name('update');
-    Route::delete('/{galeri}', [GaleriController::class, 'destroy'])->name('destroy');
-});
+        Route::get('/', [GaleriController::class, 'index'])->name('index');
+        Route::post('/', [GaleriController::class, 'store'])->name('store');
+        Route::put('/{galeri}', [GaleriController::class, 'update'])->name('update');
+        Route::delete('/{galeri}', [GaleriController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('testimoni')->name('testimoni.')->group(function () {
     Route::get('/', [TestimoniController::class, 'index'])->name('index');
@@ -63,7 +62,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/{testimoni}/edit', [TestimoniController::class, 'index'])->name('edit');
     Route::put('/{testimoni}', [TestimoniController::class, 'update'])->name('update');
     Route::delete('/{testimoni}', [TestimoniController::class, 'destroy'])->name('destroy');
+    Route::post('/{id}/toggle', [TestimoniController::class, 'toggleTampilkan'])->name('toggle');
 });
+
 
 Route::get('info-pemesanan', [InfoPemesananController::class, 'edit'])->name('info.pemesanan.edit');
 Route::put('info-pemesanan', [InfoPemesananController::class, 'update'])->name('info.pemesanan.update');

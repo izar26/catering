@@ -197,7 +197,7 @@
 <div class="d-flex">
     <div class="sidebar flex-shrink-0" id="sidebar">
         <a href="{{ route('admin.dashboard') }}" class="brand">
-            <span>CETRING</span>
+            <span>{{ $profil->nama_perusahaan }}</span>
         </a>
 
         <nav class="sidebar-nav flex-column">
@@ -267,15 +267,15 @@
 
  
  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
  <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap5.js"></script>
+@stack('scripts')
 <script>
     $(document).ready(function () {
         $('#dt').DataTable();
     });
 </script>
-    @stack('scripts')
 <script>
         @if(session('success'))
             Toastify({ text: "{{ session('success') }}", duration: 3000, close: true, gravity: "top", position: "right", backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)" }).showToast();

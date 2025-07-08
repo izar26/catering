@@ -80,7 +80,7 @@
 
     <div class="login-container">
         <div class="branding-panel">
-            <h1>CATERING</h1>
+            <h1>{{ $profil->nama_perusahaan}}</h1>
             <p>Selamat Datang di Panel Admin</p>
         </div>
 

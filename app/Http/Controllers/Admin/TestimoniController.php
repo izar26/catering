@@ -32,6 +32,7 @@ class TestimoniController extends Controller
     $data = $request->validate([
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255', // Validasi untuk aktor
+        'nomor_hp' => 'nullable|string|max:255',
         'isi' => 'required|string',
         'rating' => 'required|integer|min:1|max:5',
         'foto' => 'nullable|image|max:1024', // Validasi untuk foto (max 1MB)
@@ -62,6 +63,7 @@ class TestimoniController extends Controller
     $data = $request->validate([
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255',
+        'nomor_hp' => 'nullable|string|max:255',
         'isi' => 'required|string',
         'rating' => 'required|integer|min:1|max:5',
         'foto' => 'nullable|image|max:1024',
@@ -96,4 +98,14 @@ class TestimoniController extends Controller
 
     return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil dihapus.');
 }
+
+public function toggleTampilkan(Request $request, $id)
+{
+    $testimoni = Testimoni::findOrFail($id);
+    $testimoni->tampilkan = $request->input('tampilkan') ? 1 : 0;
+    $testimoni->save();
+
+    return response()->json(['success' => true]);
+}
+
 }
