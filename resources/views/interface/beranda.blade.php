@@ -25,9 +25,7 @@
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">
-            @if ($video)
-              <a href="{{ $video->file }}" class="glightbox-video-beranda pulsating-play-btn"></a>
-            @endif
+              <a href="{{ $profil->video_profil ?? '-' }}" class="glightbox-video-beranda pulsating-play-btn"></a>
           </div>
         </div>
       </div>

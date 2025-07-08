@@ -190,6 +190,43 @@
   <!-- Main JS File -->
   <script src="{{ asset('js/main.js') }}"></script>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdownToggles = document.querySelectorAll('.navmenu .dropdown > a');
+
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        if (window.innerWidth < 1200) {
+          e.preventDefault();
+
+          const submenu = this.nextElementSibling;
+
+          // Tutup semua dropdown lain
+          document.querySelectorAll('.navmenu .dropdown ul').forEach(ul => {
+            if (ul !== submenu) {
+              ul.classList.remove('dropdown-active');
+            }
+          });
+
+          // Toggle dropdown yang diklik
+          submenu.classList.toggle('dropdown-active');
+        }
+      });
+    });
+
+    // Tutup nav kalau klik link biasa
+    const navLinks = document.querySelectorAll('.navmenu li:not(.dropdown) > a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        if (window.innerWidth < 1200) {
+          document.body.classList.remove('mobile-nav-active');
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 
 </html>

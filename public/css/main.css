@@ -565,7 +565,7 @@ h6 {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown>.dropdown-active {
+  .navmenu .dropdown ul.dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }

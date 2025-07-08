@@ -47,7 +47,7 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         
-        <form action="{{ route('testimoni.store')}}" method="post" role="form" class="testimoni-form" enctype="multipart/form-data">
+        <form id="testimoniForm" action="{{ route('testimoni.store')}}" method="post" role="form" class="testimoni-form" enctype="multipart/form-data">
           @csrf
           <div class="row gy-4">
             <div class="col-lg-4 col-md-6">
@@ -123,6 +123,15 @@
             stars[i].classList.add('selected');
           }
         });
+      });
+
+      // Validasi saat submit form
+      const form = document.getElementById('testimoniForm'); // ganti sesuai ID form kamu
+      form.addEventListener('submit', function(e) {
+        if (!ratingInput.value) {
+          e.preventDefault(); // Cegah kirim form
+          alert('Silakan pilih rating bintang terlebih dahulu.');
+        }
       });
     </script>
 
