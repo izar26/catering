@@ -22,7 +22,7 @@ class ProfilPerusahaanController extends Controller
             'nama_perusahaan' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'alamat' => 'nullable|string',
-            'no_wa' => 'nullable|string|max:20',
+            'no_wa' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'instagram' => 'nullable|string|max:255',
             'facebook' => 'nullable|string|max:255',
