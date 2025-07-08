@@ -9,7 +9,7 @@
     <p>Kumpulan foto dari kegiatan kami</p>
   </div>
 
-  <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row g-3">
       @foreach ($galeris as $galeri)
         <div class="col-6 col-md-4 col-lg-3">
