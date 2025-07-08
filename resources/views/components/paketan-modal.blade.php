@@ -131,7 +131,10 @@
                     @endforeach
                 </ul>
 
-                <a href="https://wa.me/{{ $profil->no_wa }}?text=Halo, saya tertarik dengan paket {{ urlencode($paket->nama) }}"
+                @php
+                  $firstNo = explode(',', $profil->no_wa)[0];
+                @endphp
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $firstNo) }}?text=Halo, saya tertarik dengan paket {{ urlencode($paket->nama) }}"
                    class="btn btn-success" target="_blank">
                     <i class="bi bi-whatsapp me-1"></i> Chat WhatsApp
                 </a>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>catering - @yield('title')</title>
+  <title>{{ $profil->nama_perusahaan }} - @yield('title')</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -38,12 +38,15 @@
 <body class="index-page">
 
   <header id="header" class="header fixed-top">
+    @php
+      $firstNo = explode(',', $profil->no_wa)[0];
+    @endphp
 
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:{{ $profil->email }}">{{ $profil->email }}</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="https://wa.me/{{ $profil->no_wa}}">{{ $profil->no_wa }}</a></span></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $firstNo) }}">{{ $firstNo }}</a></span></i>
         </div>
         <div class="languages d-none d-md-flex align-items-center">
           <ul>
@@ -59,7 +62,7 @@
         <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
           <!-- images logo-->
            <img src="{{ asset('storage/' . $profil->logo) }}" alt="">
-          <h1 class="sitename">Catering</h1>
+          <h1 class="sitename">{{ $profil->nama_perusahaan }}</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">

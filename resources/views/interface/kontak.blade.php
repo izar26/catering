@@ -53,12 +53,19 @@
             </div>
           </div>
 
+          @php
+            $nomors = explode(',', $profil->no_wa);
+          @endphp
           <div class="col-md-3">
             <div class="info-item d-flex">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Hubungi Kami</h3>
-                <a href="https://wa.me/{{ $profil->no_wa}}" target="_blank">{{ $profil->no_wa }}</a>
+                @foreach($nomors as $no)
+                  <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $no) }}" target="_blank">
+                    {{ $no }}
+                  </a><br>
+                @endforeach
               </div>
             </div>
           </div>

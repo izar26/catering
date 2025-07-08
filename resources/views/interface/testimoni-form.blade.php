@@ -4,6 +4,38 @@
 
 @section('interface')
 
+  <style>
+  .div-star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .star-rating {
+    direction: ltr;
+    display: flex;
+    gap: 5px;
+  }
+
+  .star {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .star.selected,
+  .star:hover,
+  .star:hover ~ .star {
+    color: gold;
+  }
+
+  /* hover effect untuk bintang sebelumnya */
+  .star:hover ~ .star {
+    color: #ccc;
+  }
+</style>
+
     <!-- Book A Table Section -->
     <section id="book-a-table" class="book-a-table section mt-custom">
 
@@ -18,24 +50,24 @@
         <form action="{{ route('testimoni.store')}}" method="post" role="form" class="testimoni-form" enctype="multipart/form-data">
           @csrf
           <div class="row gy-4">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
               <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Kamu" required="">
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
               <input type="text" class="form-control" name="aktor" id="aktor" placeholder="Profesi Kamu" required="">
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
               <input type="file" class="form-control" name="foto" id="phone" placeholder="Your Phone" accept="image/*" >
             </div>
-            <div class="col-lg-4 col-md-6">
-              <select name="rating" id="rating" class="form-select" required>
-                  <option value="" >-- Beri Rating --</option>
-                  @for ($i = 5; $i >= 1; $i--)
-                      <option value="{{ $i }}">
-                          {{ $i }} Bintang
-                      </option>
-                  @endfor
-              </select>
+            <div class="col-lg-3 col-md-6 div-star">
+              <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <input type="hidden" name="rating" id="rating">
             </div>
           </div>
 
@@ -70,6 +102,24 @@
             }, 500); // tunggu animasi fade out selesai
           }, 3000); // tunggu 3 detik sebelum mulai fade out
         }
+      });
+
+      const stars = document.querySelectorAll('.star-rating .star');
+      const ratingInput = document.getElementById('rating');
+
+      stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+          const rating = star.getAttribute('data-value');
+          ratingInput.value = rating;
+        
+          // Reset semua bintang
+          stars.forEach(s => s.classList.remove('selected'));
+        
+          // Tambahkan class selected sesuai nilai
+          for (let i = 0; i < rating; i++) {
+            stars[i].classList.add('selected');
+          }
+        });
       });
     </script>
 

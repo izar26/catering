@@ -46,7 +46,7 @@
             @foreach ( $testimonis as $testimoni )
               @if ($testimoni->tampilkan)
                 <div class="swiper-slide">
-                  <div class="testimonial-item" ="">
+                  <div class="testimonial-item" "="">
                     <p>
                       <i class=" bi bi-quote quote-icon-left"></i>
                         <span>{{ $testimoni->isi }}</span>

@@ -203,6 +203,10 @@
     <section id="events" class="events section">
 
       <img class="slider-bg" src="{{ asset('img/events-bg.jpg') }}" alt="" data-aos="fade-in">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>PAKET EVENT</h2>
+        <p>Pilihan paket spesial yang siap meriahkan momen berharga Anda.</p>
+      </div>
 
       <div class="container">
 
@@ -230,6 +234,7 @@
                 $paragraf = preg_split('/\r\n|\r|\n/', $produk->deskripsi);
                 $paragraf = array_filter($paragraf); // Buang baris kosong
                 $paragraf = array_values($paragraf); // Reset index
+                $firstNo = explode(',', $profil->no_wa)[0];
               @endphp
             
               <div class="swiper-slide">
@@ -261,6 +266,12 @@
                     @if(count($paragraf) > 1)
                       <p>{{ $paragraf[count($paragraf) - 1] }}</p>
                     @endif
+                    <div class="text-center">
+                      <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $firstNo) }}?text=Halo, saya tertarik dengan paket {{ urlencode($produk->nama) }}"
+                         class="btn btn-success" target="_blank">
+                          <i class="bi bi-whatsapp me-1"></i> Chat WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div><!-- End Slider item -->
