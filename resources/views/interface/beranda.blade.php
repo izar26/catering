@@ -78,8 +78,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>MENGAPA MEMILIH KAMI</h2>
-        <p>Kami berkomitmen memberikan pengalaman catering terbaik, mulai dari rasa hingga pelayanan.</p>
+        <h2>KENAPA KAMI?</h2>
+        <p>Rasa mantap, layanan sigap, tampilan elegan.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
