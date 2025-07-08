@@ -52,7 +52,7 @@ function getYouTubeEmbedUrl($url) {
                         @php
                             $currentImage = (isset($galeri_edit) && $galeri_edit->tipe == 'foto' && $galeri_edit->file)
                                 ? asset('storage/'.$galeri_edit->file)
-                                : asset('img/placeholder-galeri.png');
+                                : asset('img/poto.png');
                         @endphp
                         <div class="file-upload-wrapper text-center">
                             <img id="image-preview" src="{{ $currentImage }}" class="img-fluid rounded mb-2" style="max-height: 150px; object-fit: contain;">
