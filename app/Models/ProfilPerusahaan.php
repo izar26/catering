@@ -20,6 +20,7 @@ class ProfilPerusahaan extends Model
         'service_hours',
     'fast_response',
     'tentang_kami',
+    'video_profil',
     ];
 }
 

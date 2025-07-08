@@ -32,6 +32,7 @@ class ProfilPerusahaanController extends Controller
             'service_hours' => 'nullable|string|max:255',
             'fast_response' => 'nullable|string|max:255',
             'tentang_kami' => 'nullable|string',
+            'video_profil' => 'nullable|string|max:255',
         ]);
 
         // Mengambil data profil atau membuat baru jika belum ada

@@ -27,8 +27,12 @@
                         <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4">{{ old('deskripsi', $profil->deskripsi) }}</textarea>
                     </div>
                     <div class="mb-4">
-                        <label for="deskripsi" class="form-label fw-bold">Tentang Kami</label>
+                        <label for="tentang_kami" class="form-label fw-bold">Tentang Kami</label>
                         <textarea id="tentang_kami" name="tentang_kami" class="form-control" rows="4">{{ old('tentang_kami', $profil->tentang_kami) }}</textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="video_profil" class="form-label fw-bold">Video Profil</label>
+                        <input id="video_profil" name="video_profil" class="form-control" rows="4" value="{{ old('video_profil', $profil->video_profil) }}">
                     </div>
                     
                 </div>
