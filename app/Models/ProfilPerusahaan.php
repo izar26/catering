@@ -23,4 +23,3 @@ class ProfilPerusahaan extends Model
     'video_profil',
     ];
 }
-

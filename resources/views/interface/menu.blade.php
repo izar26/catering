@@ -13,7 +13,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Menu</h2>
-        <p>Lihat Menu Lezat Kami atau Cek Menu Spesial Kami</p>
+        <p>Lihat Menu Lezat Kami</p>
       </div><!-- End Section Title -->
 
       <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">

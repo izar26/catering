@@ -18,67 +18,62 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-    <table id="dt" class="table table-hover align-middle mb-0">
-        <thead class="table-light">
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Gambar</th>
-                <th scope="col">Nama Produk</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Tipe</th>
-                {{-- [KOLOM BARU] Tambahkan header untuk Unggulan --}}
-                <th scope="col" class="text-center" title="Unggulan"><i class="bi bi-star-fill"></i></th>
-                <th scope="col" class="text-center">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($produks as $produk)
-                <tr>
-                    <td>{{ $loop->iteration + $produks->firstItem() - 1 }}</td>
-                    <td>
-                        <img src="{{ $produk->gambar ? asset('storage/'.$produk->gambar) : 'https://via.placeholder.com/80x80.png?text=No+Image' }}" alt="{{ $produk->nama }}" class="rounded" style="width: 60px; height: 60px; object-fit: cover;">
-                    </td>
-                    <td class="fw-bold">{{ $produk->nama }}</td>
-                    <td><span class="badge bg-secondary-subtle text-secondary-emphasis">{{ $produk->kategori->nama }}</span></td>
-                    <td>Rp {{ number_format($produk->harga, 0, ',', '.') }}</td>
-                    <td><span class="badge {{ $produk->tipe == 'satuan' ? 'bg-primary-subtle text-primary-emphasis' : 'bg-info-subtle text-info-emphasis' }}">{{ ucfirst($produk->tipe) }}</span></td>
-                    
-                    {{-- [KOLOM BARU] Tampilkan ikon bintang jika produk adalah unggulan --}}
-                    <td class="text-center">
-                        @if($produk->is_unggulan)
-                            <i class="bi bi-star-fill text-warning" title="Produk Unggulan"></i>
-                        @endif
-                    </td>
-
-                    <td class="text-center">
-                        <a href="{{ route('admin.produk.edit', $produk) }}" class="btn btn-sm btn-warning">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </a>
-                        <form action="{{ route('admin.produk.destroy', $produk) }}" method="POST" class="d-inline form-hapus">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger">
-                                <i class="bi bi-trash3-fill"></i> Hapus
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    {{-- [PENTING] Ubah colspan menjadi 8 karena ada tambahan 1 kolom --}}
-                    <td colspan="8" class="text-center py-4">
-                        <p class="mb-0">Belum ada data produk.</p>
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
-    </div>
-    <div class="card-footer">
-        {{-- Jika Anda tidak pakai pencarian, sederhanakan jadi ->links() saja --}}
-        {{ $produks->links() }}
+            <table id="dt" class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Gambar</th>
+                        <th scope="col">Nama Produk</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Tipe</th>
+                        <th scope="col" class="text-center" title="Unggulan"><i class="bi bi-star-fill"></i></th>
+                        <th scope="col" class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($produks as $produk)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <img src="{{ $produk->gambar ? asset('storage/'.$produk->gambar) : 'https://via.placeholder.com/80x80.png?text=No+Image' }}" alt="{{ $produk->nama }}" class="rounded" style="width: 60px; height: 60px; object-fit: cover;">
+                            </td>
+                            <td class="fw-bold">{{ $produk->nama }}</td>
+                            <td>
+                                <span class="badge bg-secondary-subtle text-secondary-emphasis">{{ $produk->kategori->nama }}</span>
+                            </td>
+                            <td>Rp {{ number_format($produk->harga, 0, ',', '.') }}</td>
+                            <td>
+                                <span class="badge {{ $produk->tipe == 'satuan' ? 'bg-primary-subtle text-primary-emphasis' : 'bg-info-subtle text-info-emphasis' }}">{{ ucfirst($produk->tipe) }}</span>
+                            </td>
+                            <td class="text-center">
+                                @if($produk->is_unggulan)
+                                    <i class="bi bi-star-fill text-warning" title="Produk Unggulan"></i>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('admin.produk.edit', $produk) }}" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <form action="{{ route('admin.produk.destroy', $produk) }}" method="POST" class="d-inline form-hapus">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash3-fill"></i> Hapus
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center py-4">
+                                <p class="mb-0">Belum ada data produk.</p>
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
