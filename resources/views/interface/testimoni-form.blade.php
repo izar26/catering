@@ -58,6 +58,9 @@
             </div>
             <div class="col-lg-4 col-md-6">
               <input type="file" class="form-control" name="foto" id="phone" placeholder="Your Phone" accept="image/*" required="">
+              @if ($errors->has('foto'))
+    <div class="text-danger">{{ $errors->first('foto') }}</div>
+@endif
             </div>
             <div class="col-lg-4 col-md-6">
               <input type="text" class="form-control" name="nomor_hp" id="phone" placeholder="Your Phone" required="">

@@ -29,14 +29,21 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
 {
+
+    $messages = [
+    'foto.required' => 'Foto wajib diunggah.',
+    'foto.image' => 'File yang diunggah harus berupa gambar.',
+    'foto.max' => 'Ukuran foto tidak boleh lebih dari 2 MB.',
+];
+
     $data = $request->validate([
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255', // Validasi untuk aktor
         'nomor_hp' => 'nullable|string|max:255',
         'isi' => 'required|string|max:100',
         'rating' => 'required|integer|min:1|max:5',
-        'foto' => 'nullable|image|max:1024', // Validasi untuk foto (max 1MB)
-    ]);
+        'foto' => 'nullable|image|max:2048', // Validasi untuk foto (max 1MB)
+    ], $messages);
 
     $data['tampilkan'] = $request->has('tampilkan');
 
