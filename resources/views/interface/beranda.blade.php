@@ -299,7 +299,7 @@
             <h5 class="mt-3">Pemesanan</h5>
             <p>
               Alamat: {{ $profil->alamat }}<br>
-              WhatsApp: <a href="https://wa.me/{{ $profil->no_wa }}">+{{ $profil->no_wa }}</a><br><br>
+              WhatsApp: <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $firstNo) }}">{{ $firstNo }}</a><br><br>
               <strong>Service Hours:</strong><br>
               {{ $profil->service_hours }}<br>
               Fast Response Chat {{ $profil->fast_response}}

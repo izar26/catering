@@ -105,13 +105,13 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="/" class="logo d-flex align-items-center">
             <span class="sitename">{{ $profil->nama_perusahaan }}</span>
           </a>
           <div class="footer-contact pt-3">
             <p><strong>Lokasi:</strong></p>
             <p>{{ $profil->alamat }}</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>{{ $profil->no_wa }}</span></p>
+            <p class="mt-3"><strong>Phone:</strong> <span>{{ $firstNo }}</span></p>
             <p><strong>Email:</strong> <span>{{ $profil->email }}</span></p>
           </div>
           <div class="social-links d-flex mt-4">
@@ -139,7 +139,7 @@
             <li><a href="/#paket">Paket Prasmanan</a></li>
             <li><a href="/#specials">Menu Unggulan</a></li>
             <li><a href="/galeri/foto">Galeri Foto</a></li>
-            <li><a href="/reservasi">Reservasi Acara</a></li>
+            <li><a href="/testimoni-form">Tulis Testimoni</a></li>
             <li><a href="/testimoni">Testimoni Pelanggan</a></li>
           </ul>
         </div>
@@ -160,7 +160,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>2025</span> <strong class="px-1 sitename">Catering</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>2025</span> <strong class="px-1 sitename">{{ $profil->nama_perusahaan }}</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
