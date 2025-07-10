@@ -166,7 +166,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://www.instagram.com/markmhbr" target="_blank">Markmhbr</a>
+        {{-- Designed by <a href="https://www.instagram.com/markmhbr" target="_blank">Markmhbr</a> --}}
       </div>
     </div>
 
