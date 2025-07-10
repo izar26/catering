@@ -232,7 +232,6 @@
                 $paragraf = preg_split('/\r\n|\r|\n/', $produk->deskripsi);
                 $paragraf = array_filter($paragraf); // Buang baris kosong
                 $paragraf = array_values($paragraf); // Reset index
-                $firstNo = explode(',', $profil->no_wa)[0];
               @endphp
             
               <div class="swiper-slide">

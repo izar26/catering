@@ -35,7 +35,7 @@ class TestimoniController extends Controller
     'foto.image' => 'File yang diunggah harus berupa gambar.',
     'foto.max' => 'Ukuran foto tidak boleh lebih dari 2 MB.',
 ];
-
+    
     $data = $request->validate([
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255', // Validasi untuk aktor

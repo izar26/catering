@@ -13,28 +13,24 @@ use App\Models\InfoPemesanan;
 class InterfaceController extends Controller
 {
     public function beranda()
-    {
-        // Ambil data pertama dari tabel profil_perusahaans
-        $profil = ProfilPerusahaan::find(1); 
-        
-        // Ambil semua produk yang is_unggulan = 1
-        $produkUnggulan = Produk::where('is_unggulan', 1)->get();
+{
+    $profil = ProfilPerusahaan::find(1); 
+    $produkUnggulan = Produk::where('is_unggulan', 1)->get();
+    $produkPrevent = Produk::where('tipe', 'prevent')->get();
+    $paketans = Produk::where('tipe', 'paketan')->get();
+    $info = InfoPemesanan::first();
+    $video = Galeri::where('tipe', 'video')->latest()->first();
 
-        
-        // Ambil produk dengan tipe 'prevent'
-        $produkPrevent = Produk::where('tipe', 'prevent')->get();
-
-
-        // Ambil produk dengan tipe 'paketan'
-        $paketans = Produk::where('tipe', 'paketan')->get();
-
-        $info = InfoPemesanan::first(); // Ambil informasi pemesanan pertama
-
-        $video = Galeri::where('tipe', 'video')->latest()->first();  // ambil video terbaru
-
-        // Kirim ke view
-        return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans','info','video'));
+    // Ambil nomor WA pertama dari string no_wa yang dipisah koma
+    $firstNo = null;
+    if ($profil && $profil->no_wa) {
+        $nomorArray = explode(',', $profil->no_wa);
+        $firstNo = trim($nomorArray[0]);
     }
+
+    return view('interface.beranda', compact('profil', 'produkUnggulan', 'produkPrevent', 'paketans', 'info', 'video', 'firstNo'));
+}
+
 
     public function menu()
     {
