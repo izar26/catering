@@ -75,7 +75,7 @@
             <li><a href="{{ route('menu')}}" class="{{ request()->is('menu') ? 'active' : '' }}"><span>Menu</span></a></li>
             <li><a href="{{ route('testimoni')}}" class="{{ request()->is('testimoni') ? 'active' : '' }}"><span>Testimoni</span></a></li>
             <li class="dropdown">
-              <a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
+              <a href="#"><span>Galeri</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="{{ route('galeri.foto') }}" class="{{ request()->is('galeri/foto') ? 'active' : '' }}">Foto</a></li>
                 <li><a href="{{ route('galeri.video') }}" class="{{ request()->is('galeri/video') ? 'active' : '' }}">Video</a></li>
@@ -161,13 +161,6 @@
 
     <div class="container copyright text-center mt-4">
       <p>© <span>2025</span> <strong class="px-1 sitename">{{ $profil->nama_perusahaan }}</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        {{-- Designed by <a href="https://www.instagram.com/markmhbr" target="_blank">Markmhbr</a> --}}
-      </div>
     </div>
 
   </footer>
@@ -190,42 +183,6 @@
   <!-- Main JS File -->
   <script src="{{ asset('js/main.js') }}"></script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const dropdownToggles = document.querySelectorAll('.navmenu .dropdown > a');
-
-    dropdownToggles.forEach(toggle => {
-      toggle.addEventListener('click', function (e) {
-        if (window.innerWidth < 1200) {
-          e.preventDefault();
-
-          const submenu = this.nextElementSibling;
-
-          // Tutup semua dropdown lain
-          document.querySelectorAll('.navmenu .dropdown ul').forEach(ul => {
-            if (ul !== submenu) {
-              ul.classList.remove('dropdown-active');
-            }
-          });
-
-          // Toggle dropdown yang diklik
-          submenu.classList.toggle('dropdown-active');
-        }
-      });
-    });
-
-    // Tutup nav kalau klik link biasa
-    const navLinks = document.querySelectorAll('.navmenu li:not(.dropdown) > a');
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        if (window.innerWidth < 1200) {
-          document.body.classList.remove('mobile-nav-active');
-        }
-      });
-    });
-  });
-</script>
 
 </body>
 
