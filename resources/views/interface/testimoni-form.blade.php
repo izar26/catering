@@ -75,7 +75,7 @@
           </div>
 
           <div class="form-group mt-3">
-            <textarea class="form-control" name="isi" id="isi" rows="5" placeholder="Message"></textarea>
+            <textarea class="form-control" name="isi" id="isi" rows="5" maxlength="100" placeholder="Message"></textarea>
           </div>
 
           <div class="text-center mt-3">

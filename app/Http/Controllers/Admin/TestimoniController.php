@@ -33,7 +33,7 @@ class TestimoniController extends Controller
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255', // Validasi untuk aktor
         'nomor_hp' => 'nullable|string|max:255',
-        'isi' => 'required|string',
+        'isi' => 'required|string|max:100',
         'rating' => 'required|integer|min:1|max:5',
         'foto' => 'nullable|image|max:1024', // Validasi untuk foto (max 1MB)
     ]);
@@ -64,7 +64,7 @@ class TestimoniController extends Controller
         'nama' => 'required|string|max:255',
         'aktor' => 'nullable|string|max:255',
         'nomor_hp' => 'nullable|string|max:255',
-        'isi' => 'required|string',
+        'isi' => 'required|string|max:100',
         'rating' => 'required|integer|min:1|max:5',
         'foto' => 'nullable|image|max:1024',
     ]);

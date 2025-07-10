@@ -49,7 +49,7 @@
                   <div class="testimonial-item" "="">
                     <p>
                       <i class=" bi bi-quote quote-icon-left"></i>
-                        <span>{{ Str::limit($testimoni->isi, 150) }}</span>
+                        <span>{{ $testimoni->isi }}</span>
                         <i class="bi bi-quote quote-icon-right"></i>
 
                         {{-- Bintang di pojok kanan bawah --}}
